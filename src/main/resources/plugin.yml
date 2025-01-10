@@ -1,0 +1,14 @@
+name: ILifeLimiter
+version: 1.0.0
+main: com.iruka.lifelimiter.ILifeLimiter
+api-version: '1.18'
+softdepend: [PlaceholderAPI]
+commands:
+  ll:
+    description: Управление жизнями игроков
+    usage: /ll <add|remove|unban|reload|help> <игрок> <количество>
+    permission: lifelimiter.admin
+permissions:
+  lifelimiter.admin:
+    description: Доступ к командам плагина
+    default: op

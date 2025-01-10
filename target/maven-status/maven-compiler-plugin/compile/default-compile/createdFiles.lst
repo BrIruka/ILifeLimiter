@@ -1,0 +1,12 @@
+com\iruka\lifelimiter\utils\LanguageManager$1.class
+com\iruka\lifelimiter\commands\LivesCommandExecutor.class
+com\iruka\lifelimiter\listeners\PlayerHealthManager.class
+com\iruka\lifelimiter\database\Database.class
+com\iruka\lifelimiter\listeners\PlayerDeathListener.class
+com\iruka\lifelimiter\placeholders\LivesExpansion.class
+com\iruka\lifelimiter\listeners\PlayerQuitListener.class
+com\iruka\lifelimiter\ILifeLimiter.class
+com\iruka\lifelimiter\commands\LivesTabCompleter.class
+com\iruka\lifelimiter\cache\CacheManager.class
+com\iruka\lifelimiter\handlers\BanHandler.class
+com\iruka\lifelimiter\utils\LanguageManager.class
