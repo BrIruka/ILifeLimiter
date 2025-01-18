@@ -34,6 +34,7 @@
 
 <ul>
 	<li><strong><span style="font-size:16px;">&nbsp;`/ll add &lt;игрок&gt; &lt;количество&gt;` - Добавить жизни игроку</span></strong></li>
+	<li><strong><span style="font-size:16px;">&nbsp;`/ll give &lt;life-stealer&gt; &lt;игрок&gt;` - Выдать шприц жизни игроку</span></strong></li>
 	<li><strong><span style="font-size:16px;">&nbsp;`/ll remove &lt;игрок&gt; &lt;количество&gt;` - Удалить жизни у игрока</span></strong></li>
 	<li><strong><span style="font-size:16px;">&nbsp;`/ll unban &lt;игрок&gt; &lt;количество&gt;` - Разбанить игрока и установить количество жизней</span></strong></li>
 	<li><strong><span style="font-size:16px;">&nbsp;`/ll reload` - Перезагрузить конфигурацию плагина</span></strong></li>
