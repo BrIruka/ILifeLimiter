@@ -7,6 +7,8 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
+import org.bukkit.entity.Player;
+import org.bukkit.inventory.ItemStack;
 
 public class LivesCommandExecutor implements CommandExecutor {
     private final ILifeLimiter plugin;
@@ -25,6 +27,34 @@ public class LivesCommandExecutor implements CommandExecutor {
 
         if (args.length == 0 || (args.length == 1 && args[0].equalsIgnoreCase("help"))) {
             sendHelpMessage(sender);
+            return true;
+        }
+
+        if (args[0].equalsIgnoreCase("give")) {
+            if (args.length < 3) {
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                        plugin.getLanguageManager().getMessage("messages.usage")));
+                return true;
+            }
+
+            String itemId = args[1];
+            String playerName = args[2];
+            Player target = Bukkit.getPlayer(playerName);
+
+            if (target == null) {
+                sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                        plugin.getLanguageManager().getMessage("messages.player-not-found")));
+                return true;
+            }
+
+            if (itemId.equalsIgnoreCase("life-stealer")) {
+                ItemStack lifeStealer = plugin.getItemManager().createLifeStealer();
+                target.getInventory().addItem(lifeStealer);
+                target.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                        plugin.getLanguageManager().getMessage("messages.life-stealer-given")));
+                return true;
+            }
+
             return true;
         }
 
@@ -149,6 +179,8 @@ public class LivesCommandExecutor implements CommandExecutor {
                 plugin.getLanguageManager().getMessage("help.header")));
         sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
                 plugin.getLanguageManager().getMessage("help.add")));
+        sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                plugin.getLanguageManager().getMessage("help.give")));
         sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
                 plugin.getLanguageManager().getMessage("help.remove")));
         sender.sendMessage(ChatColor.translateAlternateColorCodes('&',

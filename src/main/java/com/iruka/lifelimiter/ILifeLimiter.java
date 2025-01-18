@@ -5,6 +5,8 @@ import com.iruka.lifelimiter.commands.LivesCommandExecutor;
 import com.iruka.lifelimiter.commands.LivesTabCompleter;
 import com.iruka.lifelimiter.database.Database;
 import com.iruka.lifelimiter.handlers.BanHandler;
+import com.iruka.lifelimiter.items.ItemManager;
+import com.iruka.lifelimiter.listeners.LifeStealerListener;
 import com.iruka.lifelimiter.listeners.PlayerDeathListener;
 import com.iruka.lifelimiter.listeners.PlayerHealthManager;
 import com.iruka.lifelimiter.listeners.PlayerQuitListener;
@@ -27,6 +29,7 @@ public class ILifeLimiter extends JavaPlugin {
     private PlayerHealthManager healthManager;
     private BanHandler banHandler;
     private LanguageManager languageManager;
+    private ItemManager itemManager;
 
     @Override
     public void onEnable() {
@@ -45,6 +48,8 @@ public class ILifeLimiter extends JavaPlugin {
         getCommand("ll").setExecutor(new LivesCommandExecutor(this));
         getCommand("ll").setTabCompleter(new LivesTabCompleter());
 
+        itemManager = new ItemManager(this);
+        getServer().getPluginManager().registerEvents(new LifeStealerListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerDeathListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerQuitListener(this), this);
 
@@ -103,6 +108,10 @@ public class ILifeLimiter extends JavaPlugin {
 
     public LanguageManager getLanguageManager(){
         return languageManager;
+    }
+
+    public ItemManager getItemManager() {
+        return itemManager;
     }
 
     @Override

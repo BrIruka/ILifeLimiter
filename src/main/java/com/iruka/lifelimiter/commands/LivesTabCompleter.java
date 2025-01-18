@@ -11,7 +11,8 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 public class LivesTabCompleter implements TabCompleter {
-    private final List<String> subCommands = List.of("add", "remove", "unban", "reload", "help");
+    private final List<String> subCommands = List.of("add", "remove", "unban", "reload", "help", "give");
+    private final List<String> items = List.of("life-stealer");
 
     @Override
     public List<String> onTabComplete(CommandSender sender, Command command, String alias, String[] args) {
@@ -28,7 +29,11 @@ public class LivesTabCompleter implements TabCompleter {
                         .collect(Collectors.toList());
             }
             case 2 -> {
-                if (!args[0].equalsIgnoreCase("reload")) {
+                if (args[0].equalsIgnoreCase("give")) {
+                    return items.stream()
+                            .filter(item -> item.startsWith(args[1].toLowerCase()))
+                            .collect(Collectors.toList());
+                } else if (!args[0].equalsIgnoreCase("reload")) {
                     return Bukkit.getOnlinePlayers().stream()
                             .map(Player::getName)
                             .filter(name -> name.toLowerCase().startsWith(args[1].toLowerCase()))
@@ -36,7 +41,12 @@ public class LivesTabCompleter implements TabCompleter {
                 }
             }
             case 3 -> {
-                if (!args[0].equalsIgnoreCase("reload")) {
+                if (args[0].equalsIgnoreCase("give")) {
+                    return Bukkit.getOnlinePlayers().stream()
+                            .map(Player::getName)
+                            .filter(name -> name.toLowerCase().startsWith(args[2].toLowerCase()))
+                            .collect(Collectors.toList());
+                } else if (!args[0].equalsIgnoreCase("reload")) {
                     List<String> numbers = List.of("1", "5", "10");
                     return numbers.stream()
                             .filter(num -> num.startsWith(args[2]))

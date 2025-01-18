@@ -9,7 +9,7 @@ messages:
   already-banned: "&cGracz jest już zbanowany"
   not-enough-hearts: "&cNiewystarczająca liczba serc"
   no-permission: "&cNie masz uprawnień do użycia tej komendy"
-  usage: "&cUżycie: /ll <add|remove|unban|reload> <gracz> <ilość>"
+  usage: "&cUżycie: /ll <add|remove|unban|reload|help|give> <gracz> <ilość>"
   invalid-hearts-amount: "&cLiczba serc musi być większa niż 0"
   invalid-hearts-number: "&cNieprawidłowa liczba serc"
   max-hearts-exceeded: "&cNie można dodać więcej niż %max% serc"
@@ -17,9 +17,16 @@ messages:
   config-reloaded: "&aKonfiguracja została pomyślnie przeładowana"
   ban-reason: "&cStraciłeś wszystkie swoje życia!"
 
+  life-stolen-from: "&cSkradziono ci życie! Pozostało żyć: %hearts%"
+  life-stolen-success: "&aUkradłeś życie graczowi %player%! Teraz masz %hearts% żyć"
+  cannot-steal-last-heart: "&cNie można ukraść ostatniego życia!"
+  life-stealer-given: "&aOtrzymałeś Strzykawkę Życia"
+  cannot-steal-own-heart: "&cNie możesz ukraść życia samemu sobie!"
+
 help:
-  header: "&6=== ILifeLimiter Pomoc ==="
+  header: "&6=== Pomoc ILifeLimiter ==="
   add: "&e/ll add <gracz> <ilość> &7- Dodaj życia graczowi"
+  give: "&e/ll give life-stealer <gracz> &7- Daj strzykawkę życia graczowi"
   remove: "&e/ll remove <gracz> <ilość> &7- Usuń życia graczowi"
   unban: "&e/ll unban <gracz> <ilość> &7- Odbanuj gracza i ustaw ilość żyć"
   reload: "&e/ll reload &7- Przeładuj konfigurację pluginu"

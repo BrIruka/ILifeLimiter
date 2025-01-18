@@ -9,7 +9,7 @@ messages:
   already-banned: "&cИгрок уже забанен"
   not-enough-hearts: "&cНедостаточно сердец"
   no-permission: "&cУ вас нет прав для использования этой команды"
-  usage: "&cИспользование: /ll <add|remove|unban|reload> <игрок> <количество>"
+  usage: "&cИспользование: /ll <add|remove|unban|reload|help|give> <игрок> <количество>"
   invalid-hearts-amount: "&cКоличество сердец должно быть больше 0"
   invalid-hearts-number: "&cНеверное количество сердец"
   max-hearts-exceeded: "&cНельзя добавить больше %max% сердец"
@@ -17,9 +17,16 @@ messages:
   config-reloaded: "&aКонфигурация успешно перезагружена"
   ban-reason: "&cВы потеряли все свои жизни!"
 
+  life-stolen-from: "&cУ вас украли одну жизнь! Осталось жизней: %hearts%"
+  life-stolen-success: "&aВы украли жизнь у игрока %player%! Теперь у вас %hearts% жизней"
+  cannot-steal-last-heart: "&cНельзя украсть последнюю жизнь!"
+  life-stealer-given: "&aВы получили Шприц жизни"
+  cannot-steal-own-heart: "&cНельзя украсть жизнь у самого себя!"
+
 help:
   header: "&6=== ILifeLimiter Help ==="
   add: "&e/ll add <игрок> <количество> &7- Добавить жизни игроку"
+  give: "&e/ll give life-stealer <игрок> &7- Выдать шприц жизни игроку"
   remove: "&e/ll remove <игрок> <количество> &7- Удалить жизни у игрока"
   unban: "&e/ll unban <игрок> <количество> &7- Разбанить игрока и установить количество жизней"
   reload: "&e/ll reload &7- Перезагрузить конфигурацию плагина"
