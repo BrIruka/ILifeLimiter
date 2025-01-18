@@ -8,6 +8,15 @@ settings:
   min-hearts: 1
   max-hearts: 10
 
+items:
+  life-stealer:
+    name: "&c&lШприц жизни"
+    lore:
+      - "&7Позволяет украсть одну жизнь"
+      - "&7у другого игрока"
+    material: "STICK"
+    glow: true
+
   # %lifelimiter_hearts% - текущее количество жизней игрока
   # %lifelimiter_max_hearts% - максимальное количество жизней
   # %lifelimiter_min_hearts% - минимальное количество жизней

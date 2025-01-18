@@ -1,12 +1,12 @@
 name: ILifeLimiter
-version: 1.0.0
+version: ${project.version}
 main: com.iruka.lifelimiter.ILifeLimiter
 api-version: '1.18'
 softdepend: [PlaceholderAPI]
 commands:
   ll:
     description: Управление жизнями игроков
-    usage: /ll <add|remove|unban|reload|help> <игрок> <количество>
+    usage: /ll <add|remove|unban|reload|help|give> <игрок> <количество>
     permission: lifelimiter.admin
 permissions:
   lifelimiter.admin:
