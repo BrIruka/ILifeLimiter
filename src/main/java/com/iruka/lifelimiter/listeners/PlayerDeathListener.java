@@ -1,6 +1,7 @@
 package com.iruka.lifelimiter.listeners;
 
 import com.iruka.lifelimiter.ILifeLimiter;
+import com.iruka.lifelimiter.utils.ColorUtils;
 import org.bukkit.Bukkit;
 import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
@@ -31,10 +32,10 @@ public class PlayerDeathListener implements Listener {
 
                 String deathMessage = plugin.getLanguageManager().getMessage("messages.death")
                         .replace("%hearts%", String.valueOf(newHearts));
-                player.sendMessage(ChatColor.translateAlternateColorCodes('&', deathMessage));
+                player.sendMessage(ColorUtils.colorize(deathMessage));
 
                 if (newHearts <= 0) {
-                    String banReason = ChatColor.translateAlternateColorCodes('&',
+                    String banReason = ColorUtils.colorize(
                             plugin.getLanguageManager().getMessage("messages.ban-reason"));
 
                     String banCommand = plugin.getConfig().getString("commands.ban-command")

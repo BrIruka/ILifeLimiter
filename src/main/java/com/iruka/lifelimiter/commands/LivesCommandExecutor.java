@@ -1,8 +1,8 @@
 package com.iruka.lifelimiter.commands;
 
 import com.iruka.lifelimiter.ILifeLimiter;
+import com.iruka.lifelimiter.utils.ColorUtils;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
@@ -20,7 +20,7 @@ public class LivesCommandExecutor implements CommandExecutor {
     @Override
     public boolean onCommand(CommandSender sender, Command command, String label, String[] args) {
         if (!sender.hasPermission("lifelimiter.admin")) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+            sender.sendMessage(ColorUtils.colorize(
                     plugin.getLanguageManager().getMessage("messages.no-permission")));
             return true;
         }
@@ -32,7 +32,7 @@ public class LivesCommandExecutor implements CommandExecutor {
 
         if (args[0].equalsIgnoreCase("give")) {
             if (args.length < 3) {
-                sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                sender.sendMessage(ColorUtils.colorize(
                         plugin.getLanguageManager().getMessage("messages.usage")));
                 return true;
             }
@@ -42,7 +42,7 @@ public class LivesCommandExecutor implements CommandExecutor {
             Player target = Bukkit.getPlayer(playerName);
 
             if (target == null) {
-                sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                sender.sendMessage(ColorUtils.colorize(
                         plugin.getLanguageManager().getMessage("messages.player-not-found")));
                 return true;
             }
@@ -50,7 +50,7 @@ public class LivesCommandExecutor implements CommandExecutor {
             if (itemId.equalsIgnoreCase("life-stealer")) {
                 ItemStack lifeStealer = plugin.getItemManager().createLifeStealer();
                 target.getInventory().addItem(lifeStealer);
-                target.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                target.sendMessage(ColorUtils.colorize(
                         plugin.getLanguageManager().getMessage("messages.life-stealer-given")));
                 return true;
             }
@@ -60,13 +60,13 @@ public class LivesCommandExecutor implements CommandExecutor {
 
         if (args.length == 1 && args[0].equalsIgnoreCase("reload")) {
             plugin.reloadConfig();
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+            sender.sendMessage(ColorUtils.colorize(
                     plugin.getLanguageManager().getMessage("messages.config-reloaded")));
             return true;
         }
 
         if (args.length < 3) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+            sender.sendMessage(ColorUtils.colorize(
                     plugin.getLanguageManager().getMessage("messages.usage")));
             return true;
         }
@@ -78,19 +78,19 @@ public class LivesCommandExecutor implements CommandExecutor {
         try {
             hearts = Integer.parseInt(args[2]);
             if (hearts <= 0) {
-                sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                sender.sendMessage(ColorUtils.colorize(
                         plugin.getLanguageManager().getMessage("messages.invalid-hearts-amount")));
                 return true;
             }
         } catch (NumberFormatException e) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+            sender.sendMessage(ColorUtils.colorize(
                     plugin.getLanguageManager().getMessage("messages.invalid-hearts-number")));
             return true;
         }
 
         OfflinePlayer target = Bukkit.getOfflinePlayer(playerName);
         if (target == null || !target.hasPlayedBefore()) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+            sender.sendMessage(ColorUtils.colorize(
                     plugin.getLanguageManager().getMessage("messages.player-not-found")));
             return true;
         }
@@ -108,7 +108,7 @@ public class LivesCommandExecutor implements CommandExecutor {
                         plugin.updatePlayerHealth(target.getPlayer());
                     }
 
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                    sender.sendMessage(ColorUtils.colorize(
                             plugin.getLanguageManager().getMessage("messages.hearts-added-max")
                                     .replace("%player%", playerName)
                                     .replace("%hearts%", String.valueOf(actualAdded))
@@ -124,7 +124,7 @@ public class LivesCommandExecutor implements CommandExecutor {
 
             case "remove":
                 if (currentHearts - hearts < plugin.getConfig().getInt("settings.min-hearts")) {
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                    sender.sendMessage(ColorUtils.colorize(
                             plugin.getLanguageManager().getMessage("messages.not-enough-hearts")));
                     return true;
                 }
@@ -137,7 +137,7 @@ public class LivesCommandExecutor implements CommandExecutor {
 
             case "unban":
                 if (!plugin.getDatabase().isPlayerBanned(target.getUniqueId())) {
-                    sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+                    sender.sendMessage(ColorUtils.colorize(
                             plugin.getLanguageManager().getMessage("messages.player-not-banned")));
                     return true;
                 }
@@ -165,7 +165,7 @@ public class LivesCommandExecutor implements CommandExecutor {
         };
 
         if (messageKey != null) {
-            sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+            sender.sendMessage(ColorUtils.colorize(
                     plugin.getLanguageManager().getMessage(messageKey)
                             .replace("%player%", playerName)
                             .replace("%hearts%", String.valueOf(hearts))));
@@ -175,21 +175,21 @@ public class LivesCommandExecutor implements CommandExecutor {
     }
 
     private void sendHelpMessage(CommandSender sender) {
-        sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+        sender.sendMessage(ColorUtils.colorize(
                 plugin.getLanguageManager().getMessage("help.header")));
-        sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+        sender.sendMessage(ColorUtils.colorize(
                 plugin.getLanguageManager().getMessage("help.add")));
-        sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+        sender.sendMessage(ColorUtils.colorize(
                 plugin.getLanguageManager().getMessage("help.give")));
-        sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+        sender.sendMessage(ColorUtils.colorize(
                 plugin.getLanguageManager().getMessage("help.remove")));
-        sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+        sender.sendMessage(ColorUtils.colorize(
                 plugin.getLanguageManager().getMessage("help.unban")));
-        sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+        sender.sendMessage(ColorUtils.colorize(
                 plugin.getLanguageManager().getMessage("help.reload")));
-        sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+        sender.sendMessage(ColorUtils.colorize(
                 plugin.getLanguageManager().getMessage("help.help")));
-        sender.sendMessage(ChatColor.translateAlternateColorCodes('&',
+        sender.sendMessage(ColorUtils.colorize(
                 plugin.getLanguageManager().getMessage("help.footer")));
     }
 }

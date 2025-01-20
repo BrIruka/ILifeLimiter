@@ -1,6 +1,7 @@
 package com.iruka.lifelimiter.items;
 
 import com.iruka.lifelimiter.ILifeLimiter;
+import com.iruka.lifelimiter.utils.ColorUtils;
 import org.bukkit.ChatColor;
 import org.bukkit.Material;
 import org.bukkit.NamespacedKey;
@@ -34,13 +35,13 @@ public class ItemManager {
         if (meta != null) {
             // Установка имени
             String name = plugin.getConfig().getString("items.life-stealer.name", "&c&lШприц жизни");
-            meta.setDisplayName(ChatColor.translateAlternateColorCodes('&', name));
+            meta.setDisplayName(ColorUtils.colorize(name));
 
             // Установка описания
             List<String> lore = plugin.getConfig().getStringList("items.life-stealer.lore");
             List<String> coloredLore = new ArrayList<>();
             for (String line : lore) {
-                coloredLore.add(ChatColor.translateAlternateColorCodes('&', line));
+                coloredLore.add(ColorUtils.colorize(line));
             }
             meta.setLore(coloredLore);
 

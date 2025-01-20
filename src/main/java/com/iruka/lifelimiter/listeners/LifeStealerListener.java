@@ -1,7 +1,7 @@
 package com.iruka.lifelimiter.listeners;
 
 import com.iruka.lifelimiter.ILifeLimiter;
-import org.bukkit.ChatColor;
+import com.iruka.lifelimiter.utils.ColorUtils;
 import org.bukkit.Color;
 import org.bukkit.Material;
 import org.bukkit.Particle;
@@ -72,7 +72,7 @@ public class LifeStealerListener implements Listener {
 
         // Проверка на самого себя
         if (player.getUniqueId().equals(target.getUniqueId())) {
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&',
+            player.sendMessage(ColorUtils.colorize(
                     plugin.getLanguageManager().getMessage("messages.cannot-steal-own-heart")));
             return;
         }
@@ -85,14 +85,14 @@ public class LifeStealerListener implements Listener {
 
         // Проверка минимального количества сердец у цели
         if (targetHearts <= minHearts) {
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&',
+            player.sendMessage(ColorUtils.colorize(
                     plugin.getLanguageManager().getMessage("messages.cannot-steal-last-heart")));
             return;
         }
 
         // Проверка максимального количества сердец у игрока
         if (playerHearts >= maxHearts) {
-            player.sendMessage(ChatColor.translateAlternateColorCodes('&',
+            player.sendMessage(ColorUtils.colorize(
                     plugin.getLanguageManager().getMessage("messages.max-hearts-exceeded")
                             .replace("%max%", String.valueOf(maxHearts))));
             return;
@@ -120,11 +120,11 @@ public class LifeStealerListener implements Listener {
         player.playSound(player.getLocation(), Sound.ENTITY_PLAYER_LEVELUP, 1.0f, 1.0f);
 
         // Сообщения
-        target.sendMessage(ChatColor.translateAlternateColorCodes('&',
+        target.sendMessage(ColorUtils.colorize(
                 plugin.getLanguageManager().getMessage("messages.life-stolen-from")
                         .replace("%hearts%", String.valueOf(targetHearts - 1))));
 
-        player.sendMessage(ChatColor.translateAlternateColorCodes('&',
+        player.sendMessage(ColorUtils.colorize(
                 plugin.getLanguageManager().getMessage("messages.life-stolen-success")
                         .replace("%player%", target.getName())
                         .replace("%hearts%", String.valueOf(playerHearts + 1))));

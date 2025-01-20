@@ -53,6 +53,12 @@ public class ILifeLimiter extends JavaPlugin {
         getServer().getPluginManager().registerEvents(new PlayerDeathListener(this), this);
         getServer().getPluginManager().registerEvents(new PlayerQuitListener(this), this);
 
+        Bukkit.getConsoleSender().sendMessage("§2╔════════════════════════════════════");
+        Bukkit.getConsoleSender().sendMessage("§2║ §cILifeLimiter §7v" + getDescription().getVersion());
+        Bukkit.getConsoleSender().sendMessage("§2║ §7Author: §fIrukaMine");
+        Bukkit.getConsoleSender().sendMessage("§2║ §7Site: §7https://iruka-shop.site/");
+        Bukkit.getConsoleSender().sendMessage("§2║ §7Status: §aEnabled");
+        Bukkit.getConsoleSender().sendMessage("§2╚════════════════════════════════════");
 
         healthManager = new PlayerHealthManager(this);
         getServer().getPluginManager().registerEvents(healthManager, this);

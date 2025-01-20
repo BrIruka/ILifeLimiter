@@ -1,8 +1,8 @@
 package com.iruka.lifelimiter.handlers;
 
 import com.iruka.lifelimiter.ILifeLimiter;
+import com.iruka.lifelimiter.utils.ColorUtils;
 import org.bukkit.Bukkit;
-import org.bukkit.ChatColor;
 import org.bukkit.entity.Player;
 
 import java.util.UUID;
@@ -22,7 +22,7 @@ public class BanHandler {
             plugin.getLogger().info("[BanHandler] Условие для бана выполнено");
             Player player = Bukkit.getPlayer(playerUUID);
             if (player != null) {
-                String banReason = ChatColor.translateAlternateColorCodes('&',
+                String banReason = ColorUtils.colorize(
                         plugin.getLanguageManager().getMessage("messages.ban-reason"));
 
                 String banCommand = plugin.getConfig().getString("commands.ban-command")
