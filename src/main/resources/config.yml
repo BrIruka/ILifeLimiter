@@ -7,6 +7,7 @@ settings:
   starting-hearts: 10
   min-hearts: 1
   max-hearts: 10
+  modify-hearts: true  # Если true - количество сердец зависит от жизней, если false - всегда стандартное количество сердец
 
 items:
   life-stealer:

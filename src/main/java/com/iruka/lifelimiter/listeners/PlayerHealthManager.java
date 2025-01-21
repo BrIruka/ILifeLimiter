@@ -35,12 +35,20 @@ public class PlayerHealthManager implements Listener {
 
     public void updatePlayerHealth(Player player) {
         int hearts = plugin.getPlayerHearts(player.getUniqueId());
-        double maxHealth = Math.max(2.0, hearts * 2.0);
+        boolean modifyHearts = plugin.getConfig().getBoolean("settings.modify-hearts", true);
+        double maxHealths = Math.max(2.0, hearts * 2.0);
 
         AttributeInstance attribute = player.getAttribute(Attribute.GENERIC_MAX_HEALTH);
         if (attribute != null) {
-            attribute.setBaseValue(maxHealth);
-            player.setHealth(maxHealth);
+            if (modifyHearts) {
+                attribute.setBaseValue(maxHealths);
+                player.setHealth(Math.min(player.getHealth(), maxHealths));
+            } else {
+                double defaultHealth = 20.0; // Стандартное значение Minecraft (10 сердец)
+                double modifiedHealth = attribute.getValue() - attribute.getBaseValue() + defaultHealth;
+                attribute.setBaseValue(defaultHealth);
+                player.setHealth(Math.min(player.getHealth(), modifiedHealth));
+            }
         }
     }
 }
